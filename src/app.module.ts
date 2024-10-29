@@ -5,6 +5,7 @@ import { OpcoesController } from './modules/opcoes/opcoes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OpcoesService } from './modules/opcoes/opcoes.service';
 import { OpcoesModule } from './modules/opcoes/opcoes.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { OpcoesModule } from './modules/opcoes/opcoes.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    OpcoesModule
+    OpcoesModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],

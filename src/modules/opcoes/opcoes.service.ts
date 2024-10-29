@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Opcao } from './opcao.entity';
 import { CreateOpcaoDto } from './dto/create-opcao.dto';
+import { ReadOpcaoDto } from './dto/read-opcao.dto';
 
 @Injectable()
 export class OpcoesService {
@@ -12,7 +13,19 @@ export class OpcoesService {
     ) {}
 
     async findAll(): Promise<Opcao[]> {
-        return await this.opcaoRepository.find();
+        const opcoes = await this.opcaoRepository.find();
+        const opcoesDTO = [];
+        opcoes.forEach((opcao, index) => {
+            const opcaoDTO = new ReadOpcaoDto(
+                opcao.nome,
+                opcao.preco.toString(),
+                opcao.descricao,
+                opcao.foto,
+            );
+            opcaoDTO.preco = (opcaoDTO.preco.indexOf(".") > -1) ? opcaoDTO.preco.replace(".", ",") : `${opcaoDTO.preco},00`;
+            opcoesDTO.push(opcaoDTO);
+        });
+        return opcoesDTO;
     }
 
     async create(createOpcaoDto: CreateOpcaoDto): Promise<Opcao> {

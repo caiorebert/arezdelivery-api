@@ -10,4 +10,10 @@ export class Opcao {
 
   @Column()
   preco: string;
+
+  @Column({ nullable: true })
+  foto: string;
+
+  @Column( { nullable: true })
+  descricao: string;
 }

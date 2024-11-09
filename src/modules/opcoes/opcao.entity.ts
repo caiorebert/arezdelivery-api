@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, ManyToOne } from 'typeorm';
+import { Estabelecimento } from '../estabelecimento/estabelecimento.entity';
+import { Categoria } from '../categoria/categoria.entity';
 
 @Entity()
 export class Opcao {
@@ -16,4 +18,12 @@ export class Opcao {
 
   @Column( { nullable: true })
   descricao: string;
+
+  @OneToOne(() => Categoria)
+  @JoinColumn()
+  categoria: Categoria;
+
+  @ManyToOne(() => Estabelecimento, (estabelecimento) => estabelecimento.opcoes)
+  @JoinColumn()
+  estabelecimento: Estabelecimento;
 }

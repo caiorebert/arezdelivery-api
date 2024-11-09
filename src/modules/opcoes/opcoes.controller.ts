@@ -1,9 +1,10 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { Get } from '@nestjs/common';
 import { OpcoesService } from './opcoes.service';
 import { Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { CreateOpcaoDto } from './dto/create-opcao.dto';
 import { UpdateOpcaoDto } from './dto/update-opcao.dto';
+import { AuthGuard } from 'src/middlewares/auth.middleware';
 
 @Controller('opcoes')
 export class OpcoesController {

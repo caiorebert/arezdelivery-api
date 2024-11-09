@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
 import { AuthService } from './auth.service';
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Post, Req } from '@nestjs/common';
+import { LoginDTO } from './dto/loginDTO';
 
 @Controller()
 export class AuthController {
-    private authService: AuthService;
+
+    constructor(private readonly authService: AuthService) {}
 
     public async register(req: Request, res: Response): Promise<Response> {
         try {
@@ -15,22 +17,14 @@ export class AuthController {
         }
     }
 
-    @Get("/login")
-    public async login(req: Request, res: Response): Promise<Response> {
-        try {
-            const token = await this.authService.login(req.body);
-            return res.status(200).json({ token });
-        } catch (error) {
-            return res.status(401).json({ message: error.message });
-        }
+    @Post("/login")
+    public async login(@Body() login: LoginDTO): Promise<any> {
+        const token = await this.authService.login(login);
+        return token;
     }
 
-    // public async getProfile(req: Request, res: Response): Promise<Response> {
-    //     try {
-    //         const user = await this.authService.getProfile(req.user.id);
-    //         return res.status(200).json(user);
-    //     } catch (error) {
-    //         return res.status(404).json({ message: error.message });
-    //     }
-    // }
+    @Get("/logado")
+    public async logado(@Req() req: Request, res:Response): Promise<any> {
+        return this.authService.usuarioLogado(req.headers.authorization);
+    }
 }

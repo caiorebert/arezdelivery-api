@@ -1,13 +1,13 @@
 export class CreateUserDto {
-    firstName: string;
-    lastName: string;
+    primeiroNome: string;
+    ultimoNome: string;
     email: string;
-    password: string;
+    senha: string;
 
-    constructor(firstName: string, lastName: string, email: string, password: string) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(primeiroNome: string, ultimoNome: string, email: string, senha: string) {
+        this.primeiroNome = primeiroNome;
+        this.ultimoNome = ultimoNome;
         this.email = email;
-        this.password = password;
+        this.senha = senha;
     }
 }

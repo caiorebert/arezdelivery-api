@@ -9,17 +9,17 @@ export class User {
     email: string;
 
     @Column()
-    password: string;
+    senha: string;
 
     @Column()
-    firstName: string;
+    primeiroNome: string;
 
     @Column()
-    lastName: string;
+    ultimoNome: string;
 
     @CreateDateColumn()
-    createdAt: Date;
+    criadoEm: Date;
 
     @UpdateDateColumn()
-    updatedAt: Date;
+    alteradoEm: Date;
 }

@@ -3,6 +3,7 @@ export class ReadOpcaoDto {
     descricao?: string;
     preco: string;
     foto: string;
+    categoria: string;
 
     constructor(nome: string, preco: string, descricao?: string, foto?: string) {
         this.nome = nome;

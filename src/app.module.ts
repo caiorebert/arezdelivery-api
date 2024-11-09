@@ -1,26 +1,32 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { OpcoesController } from './modules/opcoes/opcoes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OpcoesService } from './modules/opcoes/opcoes.service';
 import { OpcoesModule } from './modules/opcoes/opcoes.module';
 import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { EstabelecimentoModule } from './modules/estabelecimento/estabelecimento.module';
+import { CategoriaModule } from './modules/categoria/categoria.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '1234',
-      database: 'arezdelivery',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    AuthModule,
+    UsersModule,
     OpcoesModule,
-    UsersModule
+    EstabelecimentoModule,
+    CategoriaModule
   ],
   controllers: [AppController],
   providers: [AppService],

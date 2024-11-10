@@ -19,8 +19,8 @@ export class Opcao {
   @Column( { nullable: true })
   descricao: string;
 
-  @OneToOne(() => Categoria)
-  @JoinColumn()
+  // Relacionamento N:1 - Uma opção pertence a uma única categoria
+  @ManyToOne(() => Categoria, (categoria) => categoria.opcoes)
   categoria: Categoria;
 
   @ManyToOne(() => Estabelecimento, (estabelecimento) => estabelecimento.opcoes)

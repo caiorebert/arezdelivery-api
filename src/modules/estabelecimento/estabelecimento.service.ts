@@ -79,6 +79,9 @@ export class EstabelecimentoService {
         const categoriasDTO = [];
         if (estabelecimento!=null) {
             estabelecimento.opcoes.forEach((opcao, index) => {
+                if (categoriasDTO.find(categoria => categoria.id === opcao.categoria.id)) {
+                    return;
+                }
                 categoriasDTO.push({
                     id: opcao.categoria.id,
                     nome: opcao.categoria.nome

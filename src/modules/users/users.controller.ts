@@ -2,7 +2,6 @@ import { Controller, Get, Post, Body, Param, Put, Delete, UseGuards } from '@nes
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { AuthGuard } from 'src/middlewares/auth.middleware';
 
 @Controller('users')
 export class UsersController {
@@ -18,7 +17,6 @@ export class UsersController {
         return this.usersService.findAll();
     }
 
-    @UseGuards(AuthGuard)
     @Get(':id')
     findOne(@Param('id') id: number) {
         return this.usersService.findOne(id);

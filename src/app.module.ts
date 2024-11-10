@@ -30,5 +30,12 @@ import { CategoriaModule } from './modules/categoria/categoria.module';
   ],
   controllers: [AppController],
   providers: [AppService],
+  exports: [
+    AuthModule,
+    UsersModule,
+    OpcoesModule,
+    EstabelecimentoModule,
+    CategoriaModule
+  ]
 })
 export class AppModule {}

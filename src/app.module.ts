@@ -13,6 +13,7 @@ import { CategoriaModule } from './modules/categoria/categoria.module';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
+      url: process.env.POSTGRES_URL,
       type: 'postgres',
       host: process.env.POSTGRES_HOST,
       port: 5432,

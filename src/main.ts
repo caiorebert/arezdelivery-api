@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'https://arezdelivery-front.vercel.app/', // Replace with your frontend URL
+    origin: '*', // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
     credentials: true, // Enable cookies to be sent with requests
   });

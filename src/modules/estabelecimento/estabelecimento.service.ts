@@ -19,7 +19,7 @@ export class EstabelecimentoService {
     ) {}
 
     async findAll(): Promise<Estabelecimento[]> {
-        return await this.estabelecimentoRepository.find();
+        return await this.estabelecimentoRepository.find({ relations: ['opcoes', 'opcoes.categoria']});
     }
 
     async create(estabelecimentoDTO: CreateEstabelecimentoDto): Promise<Estabelecimento> {

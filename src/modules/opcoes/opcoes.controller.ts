@@ -1,4 +1,4 @@
-import { Controller, UseGuards } from '@nestjs/common';
+import { Controller, Options, UseGuards } from '@nestjs/common';
 import { Get } from '@nestjs/common';
 import { OpcoesService } from './opcoes.service';
 import { Post, Put, Delete, Body, Param } from '@nestjs/common';
@@ -22,6 +22,11 @@ export class OpcoesController {
 
     @Put(':id')
     update(@Param('id') id: number, @Body() updateOpcaoDto: UpdateOpcaoDto) {
+        return this.opcoesService.update(id, updateOpcaoDto);
+    }
+
+    @Options(':id')
+    update2(@Param('id') id: number, @Body() updateOpcaoDto: UpdateOpcaoDto) {
         return this.opcoesService.update(id, updateOpcaoDto);
     }
 

@@ -6,7 +6,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: '*', // Replace with your frontend URL
-    allowedHeaders: 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe',
+    allowedHeaders: 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe, Access-Control-Allow-Origin',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
     credentials: true, // Enable cookies to be sent with requests
   });

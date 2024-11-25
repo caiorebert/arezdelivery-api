@@ -20,7 +20,7 @@ export class OpcoesService {
     ) {}
 
     async findAll(): Promise<Opcao[]> {
-        const opcoes = await this.opcaoRepository.find();
+        const opcoes = await this.opcaoRepository.find({ where: { dt_exclusao: null }, order: { dt_inclusao: 'DESC', nome: 'ASC' } });
         const opcoesDTO = [];
         opcoes.forEach((opcao, index) => {
             const opcaoDTO = new ReadOpcaoDto(

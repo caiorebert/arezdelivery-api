@@ -19,6 +19,12 @@ export class Opcao {
   @Column( { nullable: true })
   descricao: string;
 
+  @Column({ default: () => 'CURRENT_TIMESTAMP' })
+  dt_inclusao: Date;
+
+  @Column({ nullable: true })
+  dt_exclusao: Date;
+
   // Relacionamento N:1 - Uma opção pertence a uma única categoria
   @ManyToOne(() => Categoria, (categoria) => categoria.opcoes)
   categoria: Categoria;

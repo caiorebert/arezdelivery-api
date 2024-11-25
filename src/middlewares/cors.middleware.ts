@@ -4,7 +4,6 @@ import { Request, Response, NextFunction } from 'express';
 @Injectable()
 export class CorsMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    Logger.log("entrando no middleware");
     if (req.method === 'OPTIONS') {
         console.log(1);
       res.header('Access-Control-Allow-Origin', '*'); // Altere conforme necessário

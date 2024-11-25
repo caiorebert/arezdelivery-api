@@ -56,7 +56,19 @@ export class EstabelecimentoService {
     }
 
     async findOpcoes(id: number): Promise<any> {
-        const estabelecimento = (await this.estabelecimentoRepository.find({ relations: ['opcoes', 'opcoes.categoria'], where: { id: id}}))[0];
+        const estabelecimento = (await this.estabelecimentoRepository.find(
+                                                    { 
+                                                        relations: ['opcoes', 'opcoes.categoria'], 
+                                                        where: { id: id},
+                                                        order: {
+                                                            opcoes: {
+                                                                dt_inclusao: 'DESC',
+                                                                nome: 'ASC'
+                                                            }
+                                                        }
+                                                    }
+                                                )
+                                            )[0];
         const opcoesDTO = [];
         if (estabelecimento!=null) {
             estabelecimento.opcoes.forEach((opcao, index) => {

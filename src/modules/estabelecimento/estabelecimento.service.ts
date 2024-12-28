@@ -78,6 +78,7 @@ export class EstabelecimentoService {
                     opcao.descricao,
                     opcao.foto,
                 );
+                // opcaoDTO.id = opcao.id;
                 opcaoDTO.categoria = opcao.categoria.nome;
                 opcaoDTO.preco = (opcaoDTO.preco.indexOf(".") > -1) ? opcaoDTO.preco.replace(".", ",") : `${opcaoDTO.preco},00`;
                 opcoesDTO.push(opcaoDTO);

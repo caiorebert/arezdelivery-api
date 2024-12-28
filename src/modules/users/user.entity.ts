@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Carrinho } from '../carrinho/carrinho.entity';
 
 @Entity()
 export class User {
@@ -22,4 +23,8 @@ export class User {
 
     @UpdateDateColumn()
     alteradoEm: Date;
+
+    @OneToOne(() => Carrinho, carrinho => carrinho.user, { cascade: true })
+    @JoinColumn()
+    carrinho: Carrinho;
 }

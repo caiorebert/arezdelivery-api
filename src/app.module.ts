@@ -9,6 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 import { EstabelecimentoModule } from './modules/estabelecimento/estabelecimento.module';
 import { CategoriaModule } from './modules/categoria/categoria.module';
 import { CorsMiddleware } from './middlewares/cors.middleware';
+import { CarrinhoModule } from './modules/carrinho/carrinho.module';
+import { CarrinhoItemModule } from './modules/carrinhoitem/carrinhoitem.module';
 
 @Module({
   imports: [
@@ -28,7 +30,9 @@ import { CorsMiddleware } from './middlewares/cors.middleware';
     UsersModule,
     OpcoesModule,
     EstabelecimentoModule,
-    CategoriaModule
+    CategoriaModule,
+    CarrinhoModule,
+    CarrinhoItemModule
   ],
   controllers: [AppController],
   providers: [AppService],
@@ -37,7 +41,9 @@ import { CorsMiddleware } from './middlewares/cors.middleware';
     UsersModule,
     OpcoesModule,
     EstabelecimentoModule,
-    CategoriaModule
+    CategoriaModule,
+    CarrinhoModule,
+    CarrinhoItemModule
   ]
 })
 export class AppModule {

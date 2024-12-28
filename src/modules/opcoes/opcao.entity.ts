@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne, OneToMany, ManyToOne } from 'typeorm';
 import { Estabelecimento } from '../estabelecimento/estabelecimento.entity';
 import { Categoria } from '../categoria/categoria.entity';
+import { Carrinho } from '../carrinho/carrinho.entity';
 
 @Entity()
 export class Opcao {
@@ -25,7 +26,6 @@ export class Opcao {
   @Column({ nullable: true })
   dt_exclusao: Date;
 
-  // Relacionamento N:1 - Uma opção pertence a uma única categoria
   @ManyToOne(() => Categoria, (categoria) => categoria.opcoes)
   categoria: Categoria;
 

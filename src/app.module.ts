@@ -11,6 +11,7 @@ import { CategoriaModule } from './modules/categoria/categoria.module';
 import { CorsMiddleware } from './middlewares/cors.middleware';
 import { CarrinhoModule } from './modules/carrinho/carrinho.module';
 import { CarrinhoItemModule } from './modules/carrinhoitem/carrinhoitem.module';
+import { UserJaPossuiCarrinho } from './exceptions/userJaPossuiCarrinho';
 
 @Module({
   imports: [
@@ -32,7 +33,8 @@ import { CarrinhoItemModule } from './modules/carrinhoitem/carrinhoitem.module';
     EstabelecimentoModule,
     CategoriaModule,
     CarrinhoModule,
-    CarrinhoItemModule
+    CarrinhoItemModule,
+    UserJaPossuiCarrinho
   ],
   controllers: [AppController],
   providers: [AppService],
